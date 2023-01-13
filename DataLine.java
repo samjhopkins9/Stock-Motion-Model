@@ -11,7 +11,7 @@ public class DataLine {
     public String clse = "";
     public String vlme = "";
     
-    // Loops through the string character by character, adds characters to certain strings based on index and number of commas passed, and skips irrelevant characters
+    // Loops through the string character by character, adds characters to certain strings based on index and number of commas passed, skips irrelevant characters
     public DataLine(String line){
         int i = 0;
         int k = 0;

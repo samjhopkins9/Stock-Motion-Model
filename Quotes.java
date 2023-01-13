@@ -3,12 +3,13 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-// Class represents all atributes of a period of data for a financial asset in ArrayList form
+// Class represents all attributes of a period of data for a financial asset in ArrayList form
 // Year, Month, Day, Hour, Minute, Open, High, Low, Close, Volume
 // Contains several methods to calculate technical indicators
 // Data from FirstRateData.com
 public class Quotes {
     public int length = 0;
+    public ArrayList<String> lines = new ArrayList<>();
     public ArrayList<Integer> year = new ArrayList<>();
     public ArrayList<Integer> month = new ArrayList<>();
     public ArrayList<Integer> day = new ArrayList<>();
@@ -25,16 +26,21 @@ public class Quotes {
         // Creates a scanner to scan the contents of the data file, provided that it is in the Data Files folder
         Scanner fin = null;
         try {
-            fin = new Scanner(new File("./Data Files/" + name + "/" + name + "_" + interval + ".txt"));
+            fin = new Scanner(new File("./Data Files/" + name + "_" + interval + ".txt"));
         }
         catch (FileNotFoundException e){
             e.printStackTrace();
         }
-        // Scans content line by line
+        // Counts lines and adds each to ArrayList of Strings
+        // This step is completed before the parsing of data so that the ArrayLists contained within this class have the most recent price at the beginning of the list, so that least recent are cut off at end of trailing calculations
+        while(fin.hasNextLine()){
+            length++;
+            lines.add(fin.nextLine());
+        }
         // DataLine object reads line and returns an object with each attribute as a string
         // Each string is then converted into its correct type and appended to its ArrayList
-        while(fin.hasNextLine()){
-            DataLine strings = new DataLine(fin.nextLine());
+        for (int c=length-1; c>=0; c--){
+            DataLine strings = new DataLine(this.lines.get(c));
             year.add(Integer.parseInt(strings.yr));
             month.add(Integer.parseInt(strings.mnth));
             day.add(Integer.parseInt(strings.dy));
@@ -45,13 +51,12 @@ public class Quotes {
             low.add(Double.parseDouble(strings.lw));
             close.add(Double.parseDouble(strings.clse));
             volume.add(Integer.parseInt(strings.vlme));
-            length++;
         }
     }
 
     // Prints the date, time, Open, High, Low, Close and Volume for each unit of data, line-by-line
     public void print(){
-        for (int i=0; i<length; i++){
+        for (int i=this.length-1; i>=0; i--){
             System.out.print(month.get(i) + "/" + day.get(i) + "/" + year.get(i) + "  ");
             System.out.println(hour.get(i) + ":" + minute.get(i) + "  " + close.get(i) + " " + volume.get(i));
         }
@@ -61,6 +66,7 @@ public class Quotes {
     public ArrayList<Double> Change(int x){
         ArrayList<Double> change = new ArrayList<>();
         // the last x values are cut off from the calculation because at that point i+x will not exist, generating an error
+        // last x values are very few and very least recent, least important
         for (int i=0; i<this.length-x; i++){
             change.add(this.close.get(i+x) - this.close.get(i));
         }
@@ -71,7 +77,7 @@ public class Quotes {
     public ArrayList<Double> ROC(int x){
         ArrayList<Double> roc = new ArrayList<>();
         for (int i=0; i<this.length-x; i++){
-            roc.add((this.close.get(i+x) - this.close.get(i))/this.close.get(i+x));
+            roc.add(100*(this.close.get(i+x) - this.close.get(i))/this.close.get(i+x));
         }
         return roc;
     }
@@ -81,7 +87,7 @@ public class Quotes {
         ArrayList<Double> sma = new ArrayList<>();
         for (int i=0; i<this.length-x; i++){
             double sum = 0;
-            for (int c=0; c<x; c++){
+            for (int c=x-1; c>=0; c--){
                 sum += this.close.get(i+c);
             }
             sma.add(sum/x);
@@ -94,7 +100,7 @@ public class Quotes {
         ArrayList<Double> ema = new ArrayList<>();
         for (int i=0; i<this.length-x; i++){
             double sum = 0;
-            for (int c=0; c<x; c++){
+            for (int c=x-1; c>=0; c--){
                 sum += this.close.get(i+c);
             }
             ema.add((this.close.get(i+x-1))*(w/100.0) + (sum/x)*((100.0-w)/100.0));
@@ -124,7 +130,7 @@ public class Quotes {
             double last_loss = 0;
             // for loop gets sums for calculating average gain from unit i+c+1 to unit i+1
             // loops from least to most recent, updating last gain and last loss each time a gain or loss is reached
-            for (int c=x; c>=1; c--){
+            for (int c=x; c>0; c--){
                 double change = this.close.get(i+c+1) - this.close.get(i+c);
                 if (change > 0){
                     gain_sum += change;
