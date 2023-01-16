@@ -4,7 +4,7 @@ import java.util.ArrayList;
 // Class reads user input and returns object with symbol and interval of desired security contained in Strings
 public class UserInput {
     public String symbol;
-    public String interval = "1min"; // interval is set to only be one minute because only one set of fake data is necessary for comparison, but can change interval in code
+    public String interval = "1min"; // interval is set to only be one minute because only one set of fake data is necessary for comparison, but can change interval in code if data for other intervals is placed in folder
     
     // Creates instance of UserInput, prompts the user to select 1 or 2 for SPY or FAKE, assigns the value of the symbol attribute according to the user's choice
     public UserInput(){

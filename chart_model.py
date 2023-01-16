@@ -2,7 +2,7 @@
 import random
 import matplotlib.pyplot as plt
 
-### This short program attempts to model the intra-day, week and month movements in the stock market, according to the "Random Walk" Theory, which hypothesises that the movement of stocks throughout days, weeks and months is completely random -- based on the random events of the world and subject to the rapid adjustments of professionals and the general market.
+### This short program attempts to model the intra-day, week and month movements in the stock market, according to the "Random Walk" Theory, which hypothesises that the movement of stocks throughout days, weeks and months is completely random -- subject to the random events of the world, that is, to which the professionals and the market as a whole respond so quickly.
 ### Hypothetical stock FAKE and its hypothetical prices over time are used as an example.
 
 x_axis = []

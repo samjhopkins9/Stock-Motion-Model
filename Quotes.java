@@ -56,7 +56,7 @@ public class Quotes {
 
     // Prints the date, time, Open, High, Low, Close and Volume for each unit of data, line-by-line
     public void print(){
-        for (int i=this.length-1; i>=0; i--){
+        for (int i=0; i<this.length; i--){
             System.out.print(month.get(i) + "/" + day.get(i) + "/" + year.get(i) + "  ");
             System.out.println(hour.get(i) + ":" + minute.get(i) + "  " + close.get(i) + " " + volume.get(i));
         }
