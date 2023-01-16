@@ -1,4 +1,4 @@
-# Stock Motion Model
+# Stock Price Motion Model
 
     ## Description
      - The chart model portion of this program, written in Python, attempts to model the intra-day, week, and month movements in stock prices based on the "Random Walk" theory, which hypothesizes that the movement of stocks throughout days, weeks and months is completely random -- subject to the random events of the world, that is, to which the professionals and the market as a whole respond so quickly.
