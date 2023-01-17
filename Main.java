@@ -15,9 +15,10 @@ public class Main {
     public static String description = "This next portion of the program reads quotes data for a financial security from a .txt file and outputs a cleanly formatted version of the dates/times, closing prices, change, and several technical indicators, line-by-line.\nSPY and FAKE are the two symbols whose data are available in the \"Data Files\" folder within this repository. SPY is an S&P500 ETF; FAKE is a randomly generated motion over many hypothetical trading periods, created by this program's complementary python component.\nThe purpose is to illustrate the similarity in the movement of the stock market as a whole and a completely randomly generated motion, especially the technical indicators applied to them. Attempting to draw immediate conclusions about the next movement of the market based on the values of oscillators like ROC, MACD and RSI being high or low, or having been high or low for some period of time, is equally as effective as attempting doing so for the randomly generated movement.";
     
     public static void main(String[] args){
-        // Declares a quotes class with name and interval of the security; reads the data from the file, if it exists, and stores it in ArrayLists within the object
         System.out.println(description);
+        // Creates new instnace of UserInput class, prompting the user to enter the symbol of the security they would like to analyze has option to prompt them for the interval of data which program will read
         UserInput uin = new UserInput();
+        // Declares a quotes class with name and interval of the security as inputted by user; reads the data from the file, if it exists, and stores it in ArrayLists within the object
         Quotes in1 = new Quotes(uin.symbol, uin.interval);
         // Creates several ArrayLists containing technical indicators, using methods from the quotes class, with numbers of trailing days declared as parameters
         ArrayList<Double> Change = in1.Change(1);
