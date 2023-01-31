@@ -68,6 +68,7 @@ public class Quotes {
         
     } // end of constructor
 
+    
     // Prints the date, time, Open, High, Low, Close and Volume for each unit of data, line-by-line
     public void print(){
         
@@ -79,6 +80,7 @@ public class Quotes {
         } // end of for loop
         
     } // end of print function
+    
     
     // Calculates change between price x periods ago (usually 1) and current price for each line of data
     public ArrayList<Double> Change(int x){
@@ -97,6 +99,7 @@ public class Quotes {
         
     } // end of Change function
     
+    
     // Calculates rate of change between price x periods ago and current price for each line of data
     public ArrayList<Double> ROC(int x){
         
@@ -112,6 +115,7 @@ public class Quotes {
         
     } // end of ROC function
 
+    
     // Calculates simple moving average over x periods for each line of data
     public ArrayList<Double> SMA(int x){
         
@@ -135,6 +139,7 @@ public class Quotes {
         
     } // end of SMA function
 
+    
     // Calculates exponential moving average over x periods, with a weighting of w% given towards the price of the current day, for each line of data
     public ArrayList<Double> EMA(int x, int w){
         
@@ -156,6 +161,7 @@ public class Quotes {
         
     } // end of EMA function
 
+    
     // Calculates the difference between the exponential moving averages over a and b periods, with weightings of w% given to the price of the current day, for each line of data
     public ArrayList<Double> MACD(int a, int b, int w){
         
@@ -171,6 +177,7 @@ public class Quotes {
         
     } // end of MACD function
 
+    
     // Calculates the relative strength index over x periods for each line of data
     // The relative strength index calculation most importantly involves dividing the EMA of gains by the EMA of losses, with a weighting of 1/x given towards the most recent gain or loss, for x periods of data
     public ArrayList<Double> RSI(int x){
