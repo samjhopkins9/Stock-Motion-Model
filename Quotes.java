@@ -3,10 +3,12 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+
 // Class represents all attributes of a period of data for a financial asset in ArrayList form
 // Year, Month, Day, Hour, Minute, Open, High, Low, Close, Volume
 // Contains several methods to calculate technical indicators
 // Data from FirstRateData.com
+
 
 public class Quotes {
     

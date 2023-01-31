@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 // Class reads user input and returns object with symbol and interval of desired security contained in Strings
 public class UserInput {
     

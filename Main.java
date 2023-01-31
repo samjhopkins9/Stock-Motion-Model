@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
+
 // This program reads quotes data for a financial security from a .txt file and outputs a cleanly formatted version of the dates/times, closing prices, change, and several technical indicators, line-by-line.
 
 // SPY and FAKE are the two symbols whose data are available in the "Data Files" folder within this repository. SPY is an S&P500 ETF; FAKE is a randomly generated motion over many hypothetical trading periods, created by this program's complementary python component.
@@ -9,6 +10,7 @@ import java.text.DecimalFormat;
 
 // Attempting to draw immediate conclusions about the next movement of the market based on the values of oscillators like ROC, MACD and RSI being high or low, or having been high or low for some period of time, is equally as effective as attempting doing so for the randomly generated movement.
 // More rigorous tests of this conjecture could be done by expanding on the tools in this program.
+
 
 public class Main {
     
