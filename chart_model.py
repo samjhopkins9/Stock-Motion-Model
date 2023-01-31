@@ -7,11 +7,13 @@ import matplotlib.pyplot as plt
 
 x_axis = []
 prices = []
+
 file = open("Data Files/FAKE_1min.txt", "w")
 base = 3800.0
 
 ### Randomly generates 0 or 1 for every hypothetical minute of trading to simulate flipping a coin
 ### if 0, increase the stock by 0.01%; if 1, decrease by 0.01%
+
 for i in range(400000):
     x_axis.append(i)
     prices.append(base)
