@@ -27,8 +27,8 @@ for i in range(len(prices)):
     file.write("1111-11-11 11:11:11," + str(prices[i]) + "," + str(prices[i]) + "," + str(prices[i]) + "," + str(prices[i]) + ",1000\n")
 
 ### Describes purpose of program and graph when code is run
-print("This chart attempts to model the intra-day, week and month movements in the stock market, according to the \"Random Walk\" Theory, which hypothesises that the movement of stocks throughout days, weeks and months is completely random -- based on the random events of the world and subject to the rapid adjustments of professionals and the general market. Hypothetical stock FAKE and its hypothetical prices over time are used as an example.")
-print("Close the chart window when you are ready to continue.")
+### print("This chart attempts to model the intra-day, week and month movements in the stock market, according to the \"Random Walk\" Theory, which hypothesises that the movement of stocks throughout days, weeks and months is completely random -- based on the random events of the world and subject to the rapid adjustments of professionals and the general market. Hypothetical stock FAKE and its hypothetical prices over time are used as an example.")
+### print("Close the chart window when you are ready to continue.")
 print()
 
 ### Plots and shows FAKE prices
