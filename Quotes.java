@@ -226,6 +226,7 @@ public class Quotes {
             double rs = ((x-1)*avg_gains + last_gain) / ((x-1)*avg_losses + last_loss);
             
             rsi.add(100-(100/(1+rs)));
+            
         } // end of for loop
         
         return rsi;
