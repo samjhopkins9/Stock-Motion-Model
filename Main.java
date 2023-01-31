@@ -17,7 +17,7 @@ public class Main {
     
     public static void main(String[] args){
         
-        // System.out.println(description);
+        // System.out.println(description); // prints description
         
         // Creates new instnace of UserInput class, prompting the user to enter the symbol of the security they would like to analyze has option to prompt them for the interval of data which program will read
         UserInput uin = new UserInput();
