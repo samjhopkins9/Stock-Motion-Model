@@ -27,10 +27,15 @@ for i in range(400000):
     else:
         base *= 0.9999
 
+# end of for loop
+
 
 ### Writes the closing price to a text file line-by-line, with all other information written present to format the data such that it can be read and executed by the Java portion of this program, with all numbers, punctuation, and duplicates present in the string for this purpose
 for i in range(len(prices)):
+
     file.write("1111-11-11 11:11:11," + str(prices[i]) + "," + str(prices[i]) + "," + str(prices[i]) + "," + str(prices[i]) + ",1000\n")
+
+# end of for loop
 
 
 ### Describes purpose of program and graph when code is run, currently commented out
