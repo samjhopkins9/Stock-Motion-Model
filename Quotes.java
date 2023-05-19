@@ -35,11 +35,14 @@ public class Quotes {
         Scanner fin = null;
         
         try {
+            
             fin = new Scanner(new File("./Data Files/" + name + "_" + interval + ".txt"));
-        }
-        catch (FileNotFoundException e){
+            
+        } catch (FileNotFoundException e){
+            
             e.printStackTrace();
-        }
+            
+        } // end of try-catch
         
         // Counts lines and adds each to ArrayList of Strings
         // This step is completed before the parsing of data so that the ArrayLists contained within this class have the most recent price at the beginning of the list, so that least recent are cut off at end of trailing calculations
@@ -232,5 +235,82 @@ public class Quotes {
         return rsi;
         
     } // end of RSI function
+    
+    
+    
+    boolean morning(int i){
+        
+        if ((hour.get(i) == 9 && minute.get(i) >= 30) || (hour.get(i) == 10)){
+            
+            return true;
+            
+        } // end of if
+
+        return false;
+        
+    } // end of morning function
+    
+    // hits function returns as an ArrayList minute-by-minute if the index changes the specified percentage at any point within the given minutes or not
+    public ArrayList<Boolean> morning_hits(double change, int minutes){
+        
+        ArrayList<Boolean> vals = new ArrayList<Boolean>();
+        
+        for (int i=0; i<this.length-minutes-1; i++){
+            
+            if (!(morning(i))){
+                
+                continue;
+                
+            } // end of if
+            
+            double initial = close.get(i+minutes-1);
+            boolean found = false;
+            
+            for (int c=minutes-1; c>=0; c--){
+                
+                double movement = (close.get(i+c)-initial)/initial;
+                if (change < 0 && change/100.0 >= movement){
+                        
+                    found = true;
+                    
+                } // end of if
+                
+                else if (change >= 0 && change/100.0 <= movement){
+                        
+                    found = true;
+                    
+                } // end of else
+                
+            } // end of for loop
+                
+            vals.add(found);
+            
+        } // end of for loop
+        
+        return vals;
+        
+    } // end of hits function
+    
+    public double hitrate(double change, int minutes, int months){
+        
+        ArrayList<Boolean> data = morning_hits(change, minutes);
+        
+        double rs = (double)(data.size()) / (this.length - minutes - 1);
+        double hitrate = 0;
+        for (int i=0; i<(int)(months*19200*rs); i++){
+            
+            if (data.get(i)){
+                
+                hitrate++;
+                
+            } // end of if
+            
+        } // end of for loop
+            
+        hitrate /= (int)(months*19200*rs);
+        
+        return hitrate;
+        
+    } // end of hitrate function
     
 } // end of Quotes class

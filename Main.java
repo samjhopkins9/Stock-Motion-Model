@@ -17,11 +17,8 @@ public class Main {
     // String describing the program, to be printed when code is run
     public static String description = "This next portion of the program reads quotes data for a financial security from a .txt file and outputs a cleanly formatted version of the dates/times, closing prices, change, and several technical indicators, line-by-line.\nSPY and FAKE are the two symbols whose data are available in the \"Data Files\" folder within this repository. SPY is an S&P500 ETF; FAKE is a randomly generated motion over many hypothetical trading periods, created by this program's complementary python component.\nThe purpose is to illustrate the similarity in the movement of the stock market as a whole and a completely randomly generated motion, especially the technical indicators applied to them. Attempting to draw immediate conclusions about the next movement of the market based on the values of oscillators like ROC, MACD and RSI being high or low, or having been high or low for some period of time, is equally as effective as attempting doing so for the randomly generated movement.";
     
-    public static void main(String[] args){
+    static void quotes_print(){
         
-        // System.out.println(description); // prints description
-        
-        // Creates new instnace of UserInput class, prompting the user to enter the symbol of the security they would like to analyze has option to prompt them for the interval of data which program will read
         UserInput uin = new UserInput();
         
         // Declares a quotes class with name and interval of the security as inputted by user; reads the data from the file, if it exists, and stores it in ArrayLists within the object
@@ -50,7 +47,12 @@ public class Main {
         
         System.out.println("Date        Time   Close  Change  ROC   EMA    MACD   RSI");
         
-        /// SPY_1min.print();
+    } // end of quotes_print function
+    
+    public static void main(String[] args){
+        
+        Quotes SPY_1min = new Quotes("SPY", "1min");
+        System.out.println(SPY_1min.hitrate(0.1, 60, 6));
         
     } // end of main function
     
