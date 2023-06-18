@@ -77,7 +77,7 @@ public class Quotes {
     // Prints the date, time, Open, High, Low, Close and Volume for each unit of data, line-by-line
     public void print(){
         
-        for (int i=0; i<this.length; i--){
+        for (int i=0; i<this.length; i++){
             
             System.out.print(month.get(i) + "/" + day.get(i) + "/" + year.get(i) + "  ");
             System.out.println(hour.get(i) + ":" + minute.get(i) + "  " + close.get(i) + " " + volume.get(i));
@@ -235,82 +235,5 @@ public class Quotes {
         return rsi;
         
     } // end of RSI function
-    
-    
-    
-    boolean morning(int i){
-        
-        if ((hour.get(i) == 9 && minute.get(i) >= 30) || (hour.get(i) == 10)){
-            
-            return true;
-            
-        } // end of if
-
-        return false;
-        
-    } // end of morning function
-    
-    // hits function returns as an ArrayList minute-by-minute if the index changes the specified percentage at any point within the given minutes or not
-    public ArrayList<Boolean> morning_hits(double change, int minutes){
-        
-        ArrayList<Boolean> vals = new ArrayList<Boolean>();
-        
-        for (int i=0; i<this.length-minutes-1; i++){
-            
-            if (!(morning(i))){
-                
-                continue;
-                
-            } // end of if
-            
-            double initial = close.get(i+minutes-1);
-            boolean found = false;
-            
-            for (int c=minutes-1; c>=0; c--){
-                
-                double movement = (close.get(i+c)-initial)/initial;
-                if (change < 0 && change/100.0 >= movement){
-                        
-                    found = true;
-                    
-                } // end of if
-                
-                else if (change >= 0 && change/100.0 <= movement){
-                        
-                    found = true;
-                    
-                } // end of else
-                
-            } // end of for loop
-                
-            vals.add(found);
-            
-        } // end of for loop
-        
-        return vals;
-        
-    } // end of hits function
-    
-    public double hitrate(double change, int minutes, int months){
-        
-        ArrayList<Boolean> data = morning_hits(change, minutes);
-        
-        double rs = (double)(data.size()) / (this.length - minutes - 1);
-        double hitrate = 0;
-        for (int i=0; i<(int)(months*19200*rs); i++){
-            
-            if (data.get(i)){
-                
-                hitrate++;
-                
-            } // end of if
-            
-        } // end of for loop
-            
-        hitrate /= (int)(months*19200*rs);
-        
-        return hitrate;
-        
-    } // end of hitrate function
     
 } // end of Quotes class
