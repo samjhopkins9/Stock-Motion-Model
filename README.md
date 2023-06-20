@@ -34,4 +34,4 @@
           * Each .java file has a corresponding .class file contained within the folder, created upon the compilation of the program if not already present
         
     ## License
-     * GNU General Public License v3.0, Sam Hopkins, Jan 10, 2023. Updated Jan 12, 2023.
+     * GNU General Public License v3.0, Sam Hopkins, Jan 10, 2023. Updated June 20, 2023.
